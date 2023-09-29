@@ -14,12 +14,6 @@ last_names = [
 		"Harris", "Robinson", "White", "Thomas", "Lewis"
 ]
 
-crimes = ["Arson", "Theft", "Armed Assault", "Burglary", "Robbery", 
-					"Homicide", "Fraud", "Drug Trafficking", "Kidnapping", 
-					"Carjacking", "Cybercrime", "Vandalism", "Forgery", 
-					"Embezzlement", "Shoplifting", "Identity Theft", "Money Laundering", 
-					"Stalking", "Sexual Assault", "Domestic Violence", "Tax Fraud"]
-
 crimes_sentences = [
 		5,	# Arson
 		2,	# Theft
@@ -44,8 +38,13 @@ crimes_sentences = [
 		10	# Tax Fraud
 ]
 
+def calculator(first_names, last_names, crimes_sentences):
+	crimes = ["Arson", "Theft", "Armed Assault", "Burglary", "Robbery", 
+					"Homicide", "Fraud", "Drug Trafficking", "Kidnapping", 
+					"Carjacking", "Cybercrime", "Vandalism", "Forgery", 
+					"Embezzlement", "Shoplifting", "Identity Theft", "Money Laundering", 
+					"Stalking", "Sexual Assault", "Domestic Violence", "Tax Fraud"]
 
-def calculator(first_names, last_names, crimes, crimes_sentences):
 	crimes_comitted = random.randint(0, len(crimes) - 1)
 	first_name = random.randint(0, len(first_names) - 1)
 	last_name = random.randint(0, len(last_names) - 1)
@@ -57,6 +56,7 @@ def calculator(first_names, last_names, crimes, crimes_sentences):
 		counts = random.randint(1,25)
 		print(f'{counts} counts of {crimes[which_crime]},')
 		actual_sentence += crimes_sentences[which_crime] * counts
+		crimes.pop(which_crime)
 	while True:
 		user_guess = input(f'how many years should {first_names[first_name]} {last_names[last_name]} be convicted?\n')
 		try:
@@ -78,7 +78,7 @@ def calculator(first_names, last_names, crimes, crimes_sentences):
 
 def game_loop():
 	while True:
-	    calculator(first_names, last_names, crimes, crimes_sentences)
+	    calculator(first_names, last_names, crimes_sentences)
 
 
 def main():
