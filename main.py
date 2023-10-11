@@ -47,11 +47,13 @@ def calculator(first_names, last_names, crimes_sentences):
   ]
 
   crimes_comitted = random.randint(0, len(crimes) - 1)
-  first_name = random.randint(0, len(first_names) - 1)
-  last_name = random.randint(0, len(last_names) - 1)
+  first_name = first_names[random.randint(0, len(first_names) - 1)]
+  last_name = last_names[random.randint(0, len(last_names) - 1)]
+  if last_name == "White":
+    first_name = "Mr. Walter Hartwell"
 
   print(
-      f'the defendant, {first_names[first_name]} {last_names[last_name]} has been found guilty of: '
+      f'the defendant, {first_name} {last_name} has been found guilty of: '
   )
   actual_sentence = 0
   for i in range(crimes_comitted):
@@ -62,7 +64,7 @@ def calculator(first_names, last_names, crimes_sentences):
     crimes.pop(which_crime)
   while True:
     user_guess = input(
-        f'how many years should {first_names[first_name]} {last_names[last_name]} be convicted?\n'
+        f'how many years should {first_name} {last_name} be convicted?\n'
     )
     try:
       user_guess = int(user_guess)
@@ -78,6 +80,10 @@ def calculator(first_names, last_names, crimes_sentences):
   elif user_guess in range(actual_sentence - 100, actual_sentence + 100):
     print(
         f'you got it within 100 years so uh pretty dog water, it was {actual_sentence}'
+    )
+  elif user_guess in range(actual_sentence - 250, actual_sentence + 250):
+    print(
+        f'you got it within 250 years, so pretty bad if you ask me, it was {actual_sentence}'
     )
   else:
     print(f'you werent even close dog, it was {actual_sentence}')
